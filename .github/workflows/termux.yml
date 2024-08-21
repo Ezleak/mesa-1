@@ -30,8 +30,8 @@ jobs:
         run: |
           cd build-files
 
-          envsubst <drm-android-${{matrix.arch}}  > drm-build-crossfile
-          envsubst <mesa-android-${{matrix.arch}} > mesa-build-crossfile       
+          envsubst <drm-android-${{matrix.arch}}.txt  > drm-build-crossfile.txt
+          envsubst <mesa-android-${{matrix.arch}}.txt > mesa-build-crossfile.txt     
 
       - name: Build DRM
         run: |
