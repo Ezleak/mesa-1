@@ -30,8 +30,8 @@ jobs:
         run: |
           cd build-files
 
-          envsubst <drm-android-${{matrix.arch}}.txt  > drm-build-crossfile
-          envsubst <mesa-android-${{matrix.arch}}.txt > mesa-build-crossfile  
+          envsubst <drm-android-${{matrix.arch}}.txt  > drm-build-crossfile.txt
+          envsubst <mesa-android-${{matrix.arch}}.txt > mesa-build-crossfile.txt  
 
       - name: Build DRM
         run: |
@@ -40,7 +40,7 @@ jobs:
 
           meson setup "build-android" \
             --prefix=/tmp/drm-static \
-            --cross-file "../build-files/drm-build-crossfile" \
+            --cross-file "../build-files/drm-build-crossfile.txt" \
             -Dintel=disabled \
             -Dradeon=disabled \
             -Damdgpu=disabled \
@@ -56,7 +56,7 @@ jobs:
         run: |
           meson setup "build-android" \
             --prefix=/tmp/pan \
-            --cross-file "build-files/mesa-build-crossfile" \
+            --cross-file "build-files/mesa-build-crossfile.txt" \
             -Dplatforms=android \
             -Dplatform-sdk-version=26 \
             -Dllvm=disabled \
