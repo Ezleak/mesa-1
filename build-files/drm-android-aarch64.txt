@@ -16,5 +16,5 @@ pkg-config = ['env', 'PKG_CONFIG_LIBDIR=.:/tmp/drm-static/lib/pkgconfig', '/usr/
 [host_machine]
 system = 'linux'
 cpu_family = 'arm'
-cpu = 'armv8'
+cpu = 'aarch64'
 endian = 'little'
