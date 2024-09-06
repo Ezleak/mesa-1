@@ -61,9 +61,8 @@ jobs:
             -Dplatform-sdk-version=26 \
             -Dllvm=disabled \
             -Dandroid-stub=true \
-            -Dvulkan-drivers= \
-            -Dtools=panfrost \
-            -Dgallium-drivers=panfrost \
+            -Dvulkan-drivers=virtio-experimental \
+            -Dgallium-drivers=virgl \   
             -Dc_args="-Wno-error=incompatible-function-pointer-types" \
             -Dbuildtype=release 
             
