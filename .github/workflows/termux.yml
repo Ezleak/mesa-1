@@ -37,7 +37,7 @@ jobs:
         run: |
           git clone --depth 1 https://gitlab.freedesktop.org/mesa/drm.git
           cd drm
-          meson setup "build-android" \
+            meson setup build-android \
             --prefix=/tmp/drm-static \
             --cross-file "../build-files/drm-build-crossfile.txt" \
             -Dintel=disabled \
