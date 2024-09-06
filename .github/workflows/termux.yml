@@ -64,8 +64,7 @@ jobs:
             -Dvulkan-drivers=virtio-experimental \
             -Dgallium-drivers=virgl \   
             -Dc_args="-Wno-error=incompatible-function-pointer-types" \
-            -Dbuildtype=release 
-            
+            -Dbuildtype=release   
 
           ninja -C "build-android" install
 
