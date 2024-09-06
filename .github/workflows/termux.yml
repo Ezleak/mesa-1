@@ -37,7 +37,6 @@ jobs:
         run: |
           git clone --depth 1 https://gitlab.freedesktop.org/mesa/drm.git
           cd drm
-
           meson setup "build-android" \
             --prefix=/tmp/drm-static \
             --cross-file "../build-files/drm-build-crossfile.txt" \
@@ -65,9 +64,7 @@ jobs:
             -Dgallium-drivers=virgl \   
             -Dc_args="-Wno-error=incompatible-function-pointer-types" \
             -Dbuildtype=release   
-
           ninja -C "build-android" install
-
       - name: Upload Panfrost
         uses: actions/upload-artifact@v4
         with:
