@@ -64,7 +64,6 @@ jobs:
             -Dvulkan-drivers= \
             -Dtools=panfrost \
             -Dgallium-drivers=panfrost \
-            -Dc_args="-Wno-error=incompatible-function-pointer-types" \
             -Dbuildtype=release 
             
 
