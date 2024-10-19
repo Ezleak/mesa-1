@@ -1,14 +1,14 @@
 name: Build Android
 
 on:
-  [ workflow_dispatch]
+  [push, pull_request, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   build:
     strategy:
       matrix:
-        arch: [ "aarch64", "aarch32" ]
+        arch: [ "aarch64" ]
       fail-fast: false
 
     name: "Build for ${{matrix.arch}}"
@@ -37,7 +37,8 @@ jobs:
         run: |
           git clone --depth 1 https://gitlab.freedesktop.org/mesa/drm.git
           cd drm
-            meson setup build-android \
+
+          meson setup "build-android" \
             --prefix=/tmp/drm-static \
             --cross-file "../build-files/drm-build-crossfile.txt" \
             -Dintel=disabled \
@@ -60,11 +61,15 @@ jobs:
             -Dplatform-sdk-version=26 \
             -Dllvm=disabled \
             -Dandroid-stub=true \
-            -Dvulkan-drivers=virtio-experimental \
-            -Dgallium-drivers=virgl \   
+            -Dvulkan-drivers= \
+            -Dtools=panfrost \
+            -Dgallium-drivers=panfrost \
             -Dc_args="-Wno-error=incompatible-function-pointer-types" \
-            -Dbuildtype=release   
+            -Dbuildtype=release 
+            
+
           ninja -C "build-android" install
+
       - name: Upload Panfrost
         uses: actions/upload-artifact@v4
         with:
